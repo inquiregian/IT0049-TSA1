@@ -106,3 +106,11 @@ database/tasks_today_db.sql
 
 Gian Carlo Sarmiento  
 IT0049 - Web System Technologies
+
+## Live Application
+
+https://sarmiento-tasks.great-site.net
+
+## GitHub Repository
+
+https://github.com/inquiregian/IT0049-TSA1
