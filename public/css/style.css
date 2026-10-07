@@ -218,3 +218,173 @@ dd {
         gap: 2px;
     }
 }
+
+/* TSA2 authentication and CRUD styles */
+
+:root {
+    --red: #ae2a19;
+    --red-light: #ffebe6;
+}
+
+.task-form {
+    width: min(680px, 100%);
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 4px 14px rgba(23, 43, 77, 0.06);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--white);
+    color: var(--text);
+    font: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--blue);
+    outline: 3px solid var(--blue-light);
+}
+
+.field-error {
+    display: block;
+    margin-top: 6px;
+    color: var(--red);
+    font-weight: 700;
+}
+
+.form-actions,
+.page-actions,
+.table-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.page-actions {
+    justify-content: flex-end;
+    margin-bottom: 18px;
+}
+
+.table-actions form,
+.nav-form {
+    margin: 0;
+}
+
+.button,
+.nav-link {
+    display: inline-block;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+}
+
+.button {
+    padding: 11px 16px;
+}
+
+.button.small {
+    padding: 7px 11px;
+    font-size: 0.86rem;
+}
+
+.button.primary {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.button.primary:hover {
+    background: #0055cc;
+}
+
+.button.secondary {
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+}
+
+.button.secondary:hover {
+    background: #f1f2f4;
+}
+
+.button.danger {
+    background: var(--red-light);
+    color: var(--red);
+}
+
+.button.danger:hover {
+    background: #ffd5cc;
+}
+
+.nav-form {
+    margin-left: auto;
+}
+
+.nav-link {
+    padding: 9px 14px;
+    background: transparent;
+    color: var(--white);
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.alert {
+    margin: 0 0 20px;
+    padding: 13px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.alert.success {
+    background: var(--green-light);
+    color: var(--green);
+}
+
+.alert.error {
+    background: var(--red-light);
+    color: var(--red);
+}
+
+@media (max-width: 650px) {
+    .task-form {
+        padding: 22px;
+    }
+
+    .form-actions,
+    .table-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .table-actions form,
+    .table-actions .button {
+        width: 100%;
+    }
+}
+
+.auth-link {
+    margin-left: auto;
+}
