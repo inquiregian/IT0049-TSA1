@@ -13,11 +13,17 @@ class UserModel extends Model
         'username',
         'full_name',
         'email',
+        'password',
         'created_at',
     ];
 
     public function getDemoUser(): ?array
     {
         return $this->orderBy('id', 'ASC')->first();
+    }
+
+    public function findByUsername(string $username): ?array
+    {
+        return $this->where('username', $username)->first();
     }
 }

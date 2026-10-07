@@ -9,12 +9,7 @@
 </head>
 
 <body>
-    <nav>
-        <a href="/">Today</a>
-        <a href="/tasks">Task List</a>
-        <a href="/profile">Profile</a>
-        <a href="/about">About</a>
-    </nav>
+    <?= view('partials/nav') ?>
 
     <main class="container">
         <header class="page-header">

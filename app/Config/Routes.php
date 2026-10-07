@@ -3,7 +3,21 @@
 use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
+
+// Public pages
 $routes->get('/', 'Welcome::index');
 $routes->get('/tasks', 'Tasks::index');
 $routes->get('/profile', 'Profile::index');
 $routes->get('/about', 'About::index');
+
+// Authentication
+$routes->get('/login', 'Auth::login');
+$routes->post('/login', 'Auth::attemptLogin');
+$routes->post('/logout', 'Auth::logout');
+
+// Protected task-management actions
+$routes->get('/tasks/new', 'Tasks::newTask', ['filter' => 'auth']);
+$routes->post('/tasks/create', 'Tasks::create', ['filter' => 'auth']);
+$routes->get('/tasks/(:num)/edit', 'Tasks::edit/$1', ['filter' => 'auth']);
+$routes->post('/tasks/(:num)/update', 'Tasks::update/$1', ['filter' => 'auth']);
+$routes->post('/tasks/(:num)/archive', 'Tasks::archive/$1', ['filter' => 'auth']);

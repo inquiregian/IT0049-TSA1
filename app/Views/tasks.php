@@ -9,12 +9,7 @@
 </head>
 
 <body>
-    <nav>
-        <a href="/">Today</a>
-        <a href="/tasks">Task List</a>
-        <a href="/profile">Profile</a>
-        <a href="/about">About</a>
-    </nav>
+    <?= view('partials/nav') ?>
 
     <main class="container">
         <header class="page-header">
@@ -22,6 +17,20 @@
             <h1>Complete Task List</h1>
             <p>Review all scheduled tasks in chronological order.</p>
         </header>
+
+        <?php if (session()->getFlashdata('success')): ?>
+            <p class="alert success">
+                <?= esc(session()->getFlashdata('success')) ?>
+            </p>
+        <?php endif; ?>
+
+        <?php if (session()->get('is_logged_in')): ?>
+            <div class="page-actions">
+                <a href="<?= site_url('tasks/new') ?>" class="button primary">
+                    New Task
+                </a>
+            </div>
+        <?php endif; ?>
 
         <?php if (! empty($tasks)): ?>
             <table>
@@ -31,6 +40,10 @@
                         <th>Task</th>
                         <th>Status</th>
                         <th>Date</th>
+
+                        <?php if (session()->get('is_logged_in')): ?>
+                            <th>Actions</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
 
@@ -45,6 +58,30 @@
                                 </span>
                             </td>
                             <td><?= esc($task['task_date']) ?></td>
+
+                            <?php if (session()->get('is_logged_in')): ?>
+                                <td>
+                                    <div class="table-actions">
+                                        <a
+                                            href="<?= site_url('tasks/' . $task['id'] . '/edit') ?>"
+                                            class="button small secondary"
+                                        >
+                                            Edit
+                                        </a>
+
+                                        <form
+                                            action="<?= site_url('tasks/' . $task['id'] . '/archive') ?>"
+                                            method="post"
+                                            onsubmit="return confirm('Archive this task?');"
+                                        >
+                                            <?= csrf_field() ?>
+                                            <button type="submit" class="button small danger">
+                                                Archive
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            <?php endif; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

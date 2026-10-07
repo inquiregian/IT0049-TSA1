@@ -13,19 +13,22 @@ class TaskModel extends Model
         'title',
         'status',
         'task_date',
+        'is_archived',
         'created_at',
     ];
 
     public function getTodayTasks(): array
     {
         return $this->where('task_date', date('Y-m-d'))
+                    ->where('is_archived', 0)
                     ->orderBy('id', 'ASC')
                     ->findAll();
     }
 
     public function getAllTasks(): array
     {
-        return $this->orderBy('task_date', 'ASC')
+        return $this->where('is_archived', 0)
+                    ->orderBy('task_date', 'ASC')
                     ->orderBy('id', 'ASC')
                     ->findAll();
     }
